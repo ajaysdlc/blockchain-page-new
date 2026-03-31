@@ -632,9 +632,7 @@ header#hero {
 }
 
 /* ── Mobile breakpoint ── */
-@media (max-width: 768px) {
-
-  /* Swap visibility */
+@media (max-width: 900px) {
   .desktop-only {
     display: none !important;
   }
@@ -642,6 +640,7 @@ header#hero {
   .mobile-only {
     display: flex !important;
   }
+}
 
   /* Hero adjustments */
   header#hero {
@@ -1158,6 +1157,28 @@ header#hero {
 .about-section {
   padding: 5rem 0;
   background: var(--bg);
+  background-image: url('assets/images/aboutusbg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      #100407 0%,
+      rgba(16, 4, 7, 0) 60.35%,
+      #0C0305 86.32%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .about-layout {
@@ -1188,11 +1209,40 @@ header#hero {
   margin-bottom: 1rem;
 }
 
+.about-right {
+  position: relative;
+}
+
+.about-right::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      #0C0305 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+
 .about-char-img {
   width: 100%;
   max-width: 420px;
+  scale: calc(1.23);
   margin: 0 auto;
   border-radius: 16px;
+  display: block;
+}
+
+
+@media (min-width: 900px) and (max-width: 1100px) {
+  .about-char-img {
+    padding-top: 10px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2126,64 +2176,100 @@ header#hero {
   background: var(--bg);
 }
 
-.bportfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 3rem;
+.bportfolio-section .container {
+  overflow: visible;
 }
 
+/* DESKTOP */
+.bportfolio-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.9rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  /* ← space for scale hover on top */
+  margin-top: -2rem;
+  /* ← compensate so layout doesn't shift */
+}
+
+.bportfolio-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.bportfolio-grid .bportfolio-item {
+  flex: 0 0 220px;
+  min-width: 220px;
+}
+
+/* MOBILE */
+.bportfolio-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 3rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+}
+
+.bportfolio-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.bportfolio-scroll .bportfolio-item {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+/* CARD */
 .bportfolio-card {
   position: relative;
-
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.4s;
 }
 
+/* Desktop hover */
+@media (min-width: 901px) {
+  .bportfolio-card:hover {
+    transform: scale(1.16);
+  }
+}
 
+/* Mobile no hover */
+@media (max-width: 900px) {
+  .bportfolio-card:hover {
+    transform: none;
+  }
+}
 
 .bportfolio-card img {
   width: 100%;
   height: 316px;
   object-fit: cover;
-  transition: transform .4s;
+  transition: transform 0.4s;
+  display: block;
 }
 
-.bportfolio-card:hover {
-  transform: scale(1.26);
-
+.bportfolio-scroll .bportfolio-card img {
+  height: 480px;
 }
 
-.bportfolio-card.featured img {
-  height: 316px;
-}
-
+/* INFO OVERLAY */
 .bportfolio-info {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background: linear-gradient(transparent, rgba(10, 0, 8, 0.92));
-  padding: 1.5rem 0.3rem 0.8rem;
-}
-
-.bportfolio-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.bportfolio-label {
-  text-align: center;
-  font-family: 'Radley', serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0%;
-  color: rgba(255, 255, 255, 0.75);
-  padding-top: 36px;
-  display: block;
+  padding: 1.5rem 0.5rem 0.8rem;
 }
 
 .bportfolio-info h4 {
@@ -2200,29 +2286,56 @@ header#hero {
   line-height: 1.5;
 }
 
+/* ITEM WRAPPER */
+.bportfolio-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* LABEL */
+.bportfolio-label {
+  text-align: center;
+  font-family: 'Radley', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.75);
+  padding-top: 36px;
+  display: block;
+}
+
+/* SHOW/HIDE */
+.desktop-only {
+  display: flex !important;
+}
+
+.mobile-only {
+  display: none !important;
+}
+
 @media (max-width: 900px) {
-  .bportfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
   }
 }
-
-@media (max-width: 560px) {
-  .bportfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 360px) {
-  .bportfolio-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ===================== PRICING ===================== */
 /* ===================== PRICING ===================== */
 .pricing-section {
   padding: 5rem 0;
   background: #0C0305;
+}
+
+.container3 {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 3rem;
 }
 
 .pricing-grid {
@@ -2278,16 +2391,16 @@ header#hero {
 /* POPULAR BADGE */
 .popular-badge {
   position: absolute;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  right: 0;
   background: var(--red);
   color: #fff;
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 2px;
   padding: 0.28rem 1.1rem;
-  border-radius: 20px;
+  border-radius: 0 16px 0 10px;
+  /* top-right matches card corner */
   white-space: nowrap;
   text-transform: uppercase;
 }

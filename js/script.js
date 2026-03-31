@@ -52,8 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-
 // ===================== SCROLL REVEAL =====================
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
@@ -183,25 +181,3 @@ function validateAndSubmitConsult() {
   document.getElementById('consultForm').reset();
   window.location.href = 'https://sdlccorp.com/thank-you/';
 }
-
-// Portfolio responsive switcher
-function handlePortfolioView() {
-  const desktopGrid = document.querySelector('.bportfolio-grid.desktop-only');
-  const mobileScroll = document.querySelector('.bportfolio-scroll.mobile-only');
-
-  if (!desktopGrid || !mobileScroll) return;
-
-  if (window.innerWidth <= 900) {
-    desktopGrid.style.display = 'none';
-    mobileScroll.style.display = 'flex';
-  } else {
-    desktopGrid.style.display = 'grid';
-    mobileScroll.style.display = 'none';
-  }
-}
-
-// Run on load and resize
-handlePortfolioView();
-window.addEventListener('resize', handlePortfolioView);
-
-

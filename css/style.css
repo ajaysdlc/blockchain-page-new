@@ -479,8 +479,6 @@ a {
   .nav-menu::after {
     content: '';
   }
-}
-
   .btn-book-call {
     display: none;
   }
@@ -493,6 +491,9 @@ a {
     padding: 0 1.5rem;
   }
 }
+
+  
+
 
 @media (max-width: 480px) {
   .navbar {

@@ -50,6 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  const serviceCards = document.querySelectorAll('.bservice-card');
+  serviceCards.forEach(card => {
+    card.addEventListener('click', () => {
+      serviceCards.forEach(c => c.classList.remove('featured'));
+      card.classList.add('featured');
+    });
+  });
 });
 
 

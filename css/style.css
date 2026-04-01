@@ -384,7 +384,7 @@ a {
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100vh;
+      height: 60vh;
       background: rgba(10, 0, 8, 0.98);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -461,9 +461,9 @@ a {
                  .nav-menu li a {
     display: block;
     padding: 1rem 1.5rem;
-    font-size: 22px;
+    font-size: 16px;
     font-family: 'Rowdies', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     color: rgba(255, 255, 255, 0.85);
     border-bottom: none;
     letter-spacing: 1px;
@@ -2294,6 +2294,44 @@ a {
   color: rgba(255, 255, 255, 0.75);
   padding-top: 36px;
   display: block;
+}
+
+/* ============================================
+   PORTFOLIO DOTS
+   ============================================ */
+.bportfolio-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .bportfolio-dots {
+    display: none;
+  }
+}
+
+.bportfolio-dot {
+  width: 10px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.bportfolio-dot.active {
+  width: 28px;
+  background: #FF0019;
+}
+
+.bportfolio-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* SHOW/HIDE */

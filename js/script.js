@@ -204,4 +204,75 @@ function handlePortfolioView() {
 handlePortfolioView();
 window.addEventListener('resize', handlePortfolioView);
 
+// ============================================
+// PORTFOLIO DOTS NAVIGATION
+// ============================================
+(function () {
+    const dots = document.querySelectorAll('.bportfolio-dot');
+    const desktopGrid = document.querySelector('.bportfolio-grid');
+    const mobileScroll = document.querySelector('.bportfolio-scroll');
 
+    function setActiveDot(index) {
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[index]) dots[index].classList.add('active');
+    }
+
+    function getActiveScroller() {
+        // Returns whichever scroll container is currently visible
+        if (desktopGrid && getComputedStyle(desktopGrid).display !== 'none') return desktopGrid;
+        if (mobileScroll && getComputedStyle(mobileScroll).display !== 'none') return mobileScroll;
+        return null;
+    }
+
+    function scrollToCard(index) {
+        const scroller = getActiveScroller();
+        if (!scroller) return;
+
+        const items = scroller.querySelectorAll('.bportfolio-item');
+        if (!items[index]) return;
+
+        const scrollerRect = scroller.getBoundingClientRect();
+        const itemRect = items[index].getBoundingClientRect();
+
+        // Scroll the container so the card is at the left edge
+        const scrollLeft = scroller.scrollLeft + (itemRect.left - scrollerRect.left);
+        scroller.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+
+        setActiveDot(index);
+    }
+
+    // Dot click → scroll to card
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.dataset.index);
+            scrollToCard(index);
+        });
+    });
+
+    // Scroll → update active dot
+    function onScroll(scroller) {
+        const items = scroller.querySelectorAll('.bportfolio-item');
+        const scrollerRect = scroller.getBoundingClientRect();
+
+        let closestIndex = 0;
+        let closestDist = Infinity;
+
+        items.forEach((item, i) => {
+            const itemRect = item.getBoundingClientRect();
+            const dist = Math.abs(itemRect.left - scrollerRect.left);
+            if (dist < closestDist) {
+                closestDist = dist;
+                closestIndex = i;
+            }
+        });
+
+        setActiveDot(closestIndex);
+    }
+
+    if (desktopGrid) {
+        desktopGrid.addEventListener('scroll', () => onScroll(desktopGrid));
+    }
+    if (mobileScroll) {
+        mobileScroll.addEventListener('scroll', () => onScroll(mobileScroll));
+    }
+})();

@@ -2188,11 +2188,14 @@ a {
   gap: 3rem;
   overflow-x: auto;
   overflow-y: visible;
-  scroll-snap-type: x mandatory;
+ 
   -webkit-overflow-scrolling: touch;
   padding-bottom: 1rem;
+  
   scrollbar-width: none;
 }
+
+
 
 .bportfolio-scroll::-webkit-scrollbar {
   display: none;
@@ -2354,11 +2357,12 @@ a {
 }
 
 .pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.2rem;
   margin-bottom: 2.5rem;
   align-items: center;
+  justify-content: center;
 }
 
 /* BASE CARD */
@@ -2542,14 +2546,21 @@ a {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto 2rem;
+  .pricing-card {
+    flex: 1 1 calc(50% - 0.6rem);
+    max-width: calc(50% - 0.6rem);
   }
 
   .pricing-card.popular {
     transform: scale(1);
+  }
+}
+
+/* 2 cards → 1 card */
+@media (max-width: 560px) {
+  .pricing-card {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 }
 
@@ -2612,7 +2623,7 @@ a {
 }
 
 .bcta-desc {
-  color: #999;
+  color: #fff;
   font-size: 0.85rem;
   line-height: 1.8;
   margin-bottom: 1.8rem;
@@ -2752,7 +2763,7 @@ a {
 
 .contact-item p {
   font-size: 0.83rem;
-  color: #bbb;
+  color: #fff;
   line-height: 1.75;
   padding-top: 0.5rem;
 }

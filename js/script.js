@@ -185,94 +185,108 @@ function validateAndSubmitConsult() {
 }
 
 // Portfolio responsive switcher
+// ===================== PORTFOLIO VIEW SWITCHER =====================
 function handlePortfolioView() {
-  const desktopGrid = document.querySelector('.bportfolio-grid.desktop-only');
+  const desktopGrid  = document.querySelector('.bportfolio-grid.desktop-only');
   const mobileScroll = document.querySelector('.bportfolio-scroll.mobile-only');
-
   if (!desktopGrid || !mobileScroll) return;
 
   if (window.innerWidth <= 900) {
-    desktopGrid.style.display = 'none';
-    mobileScroll.style.display = 'flex';
+    desktopGrid.style.display  = 'none';
+    mobileScroll.style.display = 'flex';   // ← was incorrectly 'grid' before
   } else {
-    desktopGrid.style.display = 'grid';
+    desktopGrid.style.display  = 'flex';   // ← was 'grid', now 'flex'
     mobileScroll.style.display = 'none';
   }
 }
-
-// Run on load and resize
 handlePortfolioView();
 window.addEventListener('resize', handlePortfolioView);
 
-// ============================================
-// PORTFOLIO DOTS NAVIGATION
-// ============================================
+// ===================== PORTFOLIO CONTINUOUS SCROLL =====================
 (function () {
-    const dots = document.querySelectorAll('.bportfolio-dot');
-    const desktopGrid = document.querySelector('.bportfolio-grid');
-    const mobileScroll = document.querySelector('.bportfolio-scroll');
+  const desktopGrid  = document.querySelector('.bportfolio-grid');
+  const mobileScroll = document.querySelector('.bportfolio-scroll');
+  const dots         = document.querySelectorAll('.bportfolio-dot');
 
-    function setActiveDot(index) {
-        dots.forEach(d => d.classList.remove('active'));
-        if (dots[index]) dots[index].classList.add('active');
-    }
+  let isPaused = false;
+  let rafId    = null;
+  const SPEED  = 1.6; // px per frame
 
-    function getActiveScroller() {
-        // Returns whichever scroll container is currently visible
-        if (desktopGrid && getComputedStyle(desktopGrid).display !== 'none') return desktopGrid;
-        if (mobileScroll && getComputedStyle(mobileScroll).display !== 'none') return mobileScroll;
-        return null;
-    }
+  // ── Use innerWidth — most reliable for mobile ─────────────
+  function getScroller() {
+    return window.innerWidth <= 900 ? mobileScroll : desktopGrid;
+  }
 
-    function scrollToCard(index) {
-        const scroller = getActiveScroller();
-        if (!scroller) return;
+  function setActiveDot(index) {
+    dots.forEach(d => d.classList.remove('active'));
+    if (dots[index]) dots[index].classList.add('active');
+  }
 
-        const items = scroller.querySelectorAll('.bportfolio-item');
-        if (!items[index]) return;
-
-        const scrollerRect = scroller.getBoundingClientRect();
-        const itemRect = items[index].getBoundingClientRect();
-
-        // Scroll the container so the card is at the left edge
-        const scrollLeft = scroller.scrollLeft + (itemRect.left - scrollerRect.left);
-        scroller.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-
-        setActiveDot(index);
-    }
-
-    // Dot click → scroll to card
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const index = parseInt(dot.dataset.index);
-            scrollToCard(index);
-        });
+  function syncDot(scroller) {
+    const items = Array.from(scroller.querySelectorAll('.bportfolio-item'));
+    const rect  = scroller.getBoundingClientRect();
+    let closestIndex = 0, closestDist = Infinity;
+    items.forEach((item, i) => {
+      const dist = Math.abs(item.getBoundingClientRect().left - rect.left);
+      if (dist < closestDist) { closestDist = dist; closestIndex = i; }
     });
+    setActiveDot(closestIndex);
+  }
 
-    // Scroll → update active dot
-    function onScroll(scroller) {
-        const items = scroller.querySelectorAll('.bportfolio-item');
-        const scrollerRect = scroller.getBoundingClientRect();
-
-        let closestIndex = 0;
-        let closestDist = Infinity;
-
-        items.forEach((item, i) => {
-            const itemRect = item.getBoundingClientRect();
-            const dist = Math.abs(itemRect.left - scrollerRect.left);
-            if (dist < closestDist) {
-                closestDist = dist;
-                closestIndex = i;
-            }
-        });
-
-        setActiveDot(closestIndex);
+  // ── Continuous RAF loop ───────────────────────────────────
+  function autoScroll() {
+    const scroller = getScroller();
+    if (scroller && !isPaused) {
+      if (scroller.scrollLeft >= scroller.scrollWidth - scroller.clientWidth - 1) {
+        scroller.scrollLeft = 0;
+      } else {
+        scroller.scrollLeft += SPEED;
+      }
+      syncDot(scroller);
     }
+    rafId = requestAnimationFrame(autoScroll);
+  }
 
-    if (desktopGrid) {
-        desktopGrid.addEventListener('scroll', () => onScroll(desktopGrid));
-    }
-    if (mobileScroll) {
-        mobileScroll.addEventListener('scroll', () => onScroll(mobileScroll));
-    }
+  function pause()  { isPaused = true; }
+  function resume() { isPaused = false; }
+
+  function attachPause(el) {
+    if (!el) return;
+    el.addEventListener('mouseenter', pause);
+    el.addEventListener('mouseleave', resume);
+    el.addEventListener('touchstart', pause, { passive: true });
+    el.addEventListener('touchend', () => setTimeout(resume, 2000), { passive: true });
+  }
+
+  // ── Dot click ────────────────────────────────────────────
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const scroller = getScroller();
+      const items    = Array.from(scroller.querySelectorAll('.bportfolio-item'));
+      const index    = parseInt(dot.dataset.index);
+      if (!items[index]) return;
+      isPaused = true;
+      const rect = scroller.getBoundingClientRect();
+      scroller.scrollTo({
+        left: scroller.scrollLeft + (items[index].getBoundingClientRect().left - rect.left),
+        behavior: 'smooth'
+      });
+      setActiveDot(index);
+      setTimeout(resume, 3000);
+    });
+  });
+
+  // ── Reset on resize ───────────────────────────────────────
+  window.addEventListener('resize', () => {
+    const scroller = getScroller();
+    if (scroller) scroller.scrollLeft = 0;
+  });
+
+  attachPause(desktopGrid);
+  attachPause(mobileScroll);
+
+  window.addEventListener('load', () => {
+    setTimeout(() => { rafId = requestAnimationFrame(autoScroll); }, 1000);
+  });
+
 })();

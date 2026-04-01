@@ -538,7 +538,7 @@
             <div class="why-bg-overlay"></div>
         </div>
 
-        <div class="container" style="position: relative; z-index: 1;">
+        <div class="container3" style="position: relative; z-index: 1;">
             <h2 class="why-main-title">Why Choose Us for<br>Blockchain Game Development</h2>
             <div class="why-grid">
 
@@ -657,13 +657,14 @@
                     <img src="assets/images/blockchain-portfolio-desktop-0.png" alt="Dominion Forge"
                         onerror="this.src='https://placehold.co/300x400/1a0010/FF0019?text=DominionForge'" />
                     <div class="bportfolio-info">
-                        <h4>Blockchain Strategy & Land Ownership Game</h4>
-                        <p>Created a decentralized strategy game focused on land ownership and kingdom building.
-                            Implemented NFT-based land assets and a player-driven economy powered by smart contracts.
+                        <h4>Web3 Stealth & Tactical Mission Game</h4>
+                        <p>
+                        Developed a tactical stealth game with mission-based progression and NFT character systems. Enabled DAO-based governance
+                        allowing players to participate in key in-game decisions.
                         </p>
                     </div>
                 </div>
-                <span class="bportfolio-label">Dominion Forge</span>
+                <span class="bportfolio-label">Phantom Syndicate</span>
             </div>
 
             <div class="bportfolio-item">
@@ -849,13 +850,13 @@
             <div class="pricing-card ">
                 <div class="pricing-top">
                     <div class="pricing-price">$15</div>
-                    <div class="pricing-period">/ hour</div>
+                    <!-- <div class="pricing-period">/ hour</div> -->
                 </div>
                 <p class="pricing-subtitle">Perfect for small tasks &amp; quick updates</p>
                 <ul class="pricing-features">
-                    <li><i class="fas fa-circle-check"></i> Flexible hiring</li>
-                    <li><i class="fas fa-circle-check"></i> Pay-as-you-go</li>
-                    <li><i class="fas fa-circle-check"></i> Fast onboarding</li>
+                    <li><i class="far fa-circle-check"></i> Flexible hiring</li>
+                    <li><i class="far fa-circle-check"></i> Pay-as-you-go</li>
+                    <li><i class="far fa-circle-check"></i> Fast onboarding</li>
                 </ul>
                 <button class="btn-pricing-outline">Select Hourly</button>
             </div>
@@ -865,13 +866,13 @@
                 <div class="popular-badge">POPULAR</div>
                 <div class="pricing-top">
                     <div class="pricing-price">$2,400</div>
-                    <div class="pricing-period">/ month</div>
+                    <!-- <div class="pricing-period">/ month</div> -->
                 </div>
                 <p class="pricing-subtitle">Dedicated Game Developer (160 hrs/month)</p>
                 <ul class="pricing-features">
-                    <li><i class="fas fa-circle-check"></i> Full-time commitment</li>
-                    <li><i class="fas fa-circle-check"></i> Expertise in Unity / Unreal</li>
-                    <li><i class="fas fa-circle-check"></i> Daily progress updates</li>
+                    <li><i class="far fa-circle-check"></i> Full-time commitment</li>
+                    <li><i class="far fa-circle-check"></i> Expertise in Unity / Unreal</li>
+                    <li><i class="far fa-circle-check"></i> Daily progress updates</li>
                 </ul>
                 <button class="btn-pricing-red">Select Monthly</button>
             </div>
@@ -880,13 +881,13 @@
             <div class="pricing-card ">
                 <div class="pricing-top">
                     <div class="pricing-price">$12,000</div>
-                    <div class="pricing-period">/ month</div>
+                    <!-- <div class="pricing-period">/ month</div> -->
                 </div>
                 <p class="pricing-subtitle">Build a Team of 5 Game Developers</p>
                 <ul class="pricing-features">
-                    <li><i class="fas fa-circle-check"></i> Complete SCRUM team</li>
-                    <li><i class="fas fa-circle-check"></i> Faster development cycle</li>
-                    <li><i class="fas fa-circle-check"></i> Ideal for full-scale game projects</li>
+                    <li><i class="far fa-circle-check"></i> Complete SCRUM team</li>
+                    <li><i class="far fa-circle-check"></i> Faster development cycle</li>
+                    <li><i class="far fa-circle-check"></i> Ideal for full-scale game projects</li>
                 </ul>
                 <button class="btn-pricing-outline">Select Monthly</button>
             </div>
@@ -911,31 +912,30 @@
             <!-- LEFT: Heading + Desc + FORM -->
             <div class="bcta-left">
                 <h2 class="bcta-heading">Build Your Blockchain Game<br>with Confidence</h2>
-                <p class="bcta-desc">Turn your game idea into a powerful Web3 gaming experience with a team that
-                    understands both gameplay and technology.</p>
+                <p class="bcta-desc">Turn your game idea into a powerful Web3 gaming experience with a team that understands both gameplay and blockchain.</p>
 
                 <form id="contactForm" class="contact-form">
 
                     <div class="contact-field">
                         <label for="fullName">Name</label>
-                        <input type="text" id="fullName" placeholder="Name"
+                        <input type="text" id="fullName" 
                             oninput="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')" />
                     </div>
 
                     <div class="contact-field">
                         <label for="email">E-mail</label>
-                        <input type="email" id="email" placeholder="E-mail" />
+                        <input type="email" id="email"  />
                     </div>
 
                     <div class="contact-field ">
                         <label for="phone">Phone No.</label>
-                        <input type="tel" id="phone" placeholder="Phone No."
+                        <input type="tel" id="phone" 
                             oninput="this.value=this.value.replace(/[^0-9+\s\-()]/g,'')" />
                     </div>
 
                     <div class="contact-field full-width">
                         <label for="requirement">Requirements</label>
-                        <textarea id="requirement" placeholder="Requirements" rows="4"></textarea>
+                        <textarea id="requirement"  rows="4"></textarea>
                     </div>
 
                     <input type="hidden" id="gamedevpageUrl" />
@@ -1124,7 +1124,11 @@
     </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>emailjs.init("KjrC-i7wM9oKtImk");</script>
+<script>
+    (function () {
+        emailjs.init("_Kjrc-i7wM9oKtImk"); // Your PUBLIC KEY
+    })();
+</script>
     <script src="js/script.js"></script>
 </body>
 

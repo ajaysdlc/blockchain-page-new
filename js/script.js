@@ -119,7 +119,7 @@ window.addEventListener('load', () => {
     if (!isValid) { alert('Please fill all required fields correctly.'); return; }
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Sending...';
-    const templateParams = { name: fullName.value.trim(), email: email.value.trim(), phone: phone.value.trim(), message: requirement.value.trim(), pageurl: pageUrl ? pageUrl.value : window.location.href, time: new Date().toLocaleString() };
+    const templateParams = { name: fullName.value.trim(), email: email.value.trim(), phone: phone.value.trim(), message: requirement.value.trim(), page_url: pageUrl ? pageUrl.value : window.location.href, time: new Date().toLocaleString() };
     try {
       const response = await emailjs.send('service_h38sdpk', 'template_lbjyykk', templateParams);
       if (response.status === 200) {

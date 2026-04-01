@@ -3233,11 +3233,33 @@ header#hero {
   }
 
   .stats-section {
-    padding: 1.5rem 0;
+    padding: 4rem 0;
   }
 
-  .about-section {
-    padding: 3rem 0;
+  /* ── Uniform section padding for all sections on tablet ── */
+  .about-section,
+  .bservices-section,
+  .tech-section,
+  .why-section,
+  .bportfolio-section,
+  .pricing-section,
+  .bcta-section {
+    padding: 4rem 0;
+  }
+
+  /* ── Uniform container side padding ── */
+  .about-section .container,
+  .bservices-section .container,
+  .tech-section .container,
+  .why-section .container,
+  .bportfolio-section .container,
+  .pricing-section .container,
+  .bcta-section .container,
+  .container,
+  .container2,
+  .container3 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
@@ -3245,6 +3267,24 @@ header#hero {
   .hero-content {
     padding-top: 72px;
     padding-bottom: 1rem;
+  }
+
+  /* Slightly less padding on smaller tablets */
+  .about-section,
+  .bservices-section,
+  .tech-section,
+  .why-section,
+  .bportfolio-section,
+  .pricing-section,
+  .bcta-section {
+    padding: 3rem 0;
+  }
+
+  .container,
+  .container2,
+  .container3 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -3312,4 +3352,3 @@ header#hero {
     max-width: 680px;
   }
 }
-

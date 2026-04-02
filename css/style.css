@@ -1160,8 +1160,14 @@ header#hero {
   overflow: hidden;
 }
 
+.about-section .container3 {
+  position: relative;
+  z-index: 1;
+  /* sits above the ::before gradient */
+}
+
 .about-layout {
-  width: 80%;
+  width: 70%;
   grid-template-columns: 2fr 0.8fr;
   gap: 1rem;
   align-items: center;
@@ -1187,15 +1193,23 @@ header#hero {
   font-size: clamp(34px, 5vw, 70px);
   line-height: 60px;
   letter-spacing: 0;
-  color: #fff;
+  color: #ffffff !important;
   margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .about-label {
+    font-family: 'Rowdies', sans-serif !important;
+    font-size: clamp(24px, 6vw, 36px) !important;
+    line-height: 1.2;
+  }
 }
 
 
 .about-desc {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 28px;
   letter-spacing: 0;
   color: #ffffff;
@@ -1230,9 +1244,9 @@ header#hero {
 
 
 .about-char-img {
-  width: 500%;
-  max-width: 320px;
-  padding-top: 280px;
+  width: 700%;
+  max-width: 420px;
+  padding-top: 80px;
   scale: calc(1.23);
   margin: 0 auto;
   border-radius: 16px;
@@ -1400,7 +1414,7 @@ header#hero {
 
 /* Main heading — bold heavy like Figma */
 .services-main-title {
-  font-family: 'Inter', sans-serif;
+font-family: 'Rowdies', sans-serif;
   font-weight: 800;
   font-size: clamp(28px, 4vw, 50px);
   line-height: 1.1;

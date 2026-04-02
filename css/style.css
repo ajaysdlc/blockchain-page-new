@@ -2427,7 +2427,7 @@ font-family: 'Rowdies', sans-serif;
   margin-top: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .bportfolio-dots {
     display: none;
   }

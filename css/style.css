@@ -992,9 +992,9 @@ header#hero {
   .hero-content .btn-secondary,
   .hero-btns .btn-primary,
   .hero-btns .btn-secondary {
-    width: 100px;
+    width: 110px;
     height: 42px;
-    font-size: 10px;
+    font-size: 11px;
     padding: 0 clamp(8px, 1.2vw, 16px);
     border-radius: 8px;
     white-space: nowrap;
@@ -3657,5 +3657,47 @@ header#hero {
     height: 46px !important;
     min-width: unset !important;
     width: 100% !important;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 960px) {
+  .hero-circle,
+  .hero-text-circle {
+    width: 340px !important;
+    height: 340px !important;
+  }
+
+  .hero-text-circle {
+    margin-left: -70px !important;
+  }
+
+  .hero-text {
+    padding: 0 12px 0 80px !important;
+  }
+
+  .hero-title {
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .hero-desc {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .hero-btns {
+    gap: 6px !important;
+  }
+
+  .hero-content .btn-primary,
+  .hero-content .btn-secondary,
+  .hero-btns .btn-primary,
+  .hero-btns .btn-secondary {
+    width: 100px !important;
+    height: 36px !important;
+    font-size: 10px !important;
+    padding: 0 8px !important;
   }
 }

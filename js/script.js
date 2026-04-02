@@ -195,15 +195,15 @@ function validateAndSubmitConsult() {
 // Portfolio responsive switcher
 // ===================== PORTFOLIO VIEW SWITCHER =====================
 function handlePortfolioView() {
-  const desktopGrid  = document.querySelector('.bportfolio-grid.desktop-only');
+  const desktopGrid = document.querySelector('.bportfolio-grid.desktop-only');
   const mobileScroll = document.querySelector('.bportfolio-scroll.mobile-only');
   if (!desktopGrid || !mobileScroll) return;
 
   if (window.innerWidth <= 900) {
-    desktopGrid.style.display  = 'none';
+    desktopGrid.style.display = 'none';
     mobileScroll.style.display = 'flex';   // ← was incorrectly 'grid' before
   } else {
-    desktopGrid.style.display  = 'flex';   // ← was 'grid', now 'flex'
+    desktopGrid.style.display = 'flex';   // ← was 'grid', now 'flex'
     mobileScroll.style.display = 'none';
   }
 }
@@ -212,13 +212,13 @@ window.addEventListener('resize', handlePortfolioView);
 
 // ===================== PORTFOLIO CONTINUOUS SCROLL =====================
 (function () {
-  const desktopGrid  = document.querySelector('.bportfolio-grid');
+  const desktopGrid = document.querySelector('.bportfolio-grid');
   const mobileScroll = document.querySelector('.bportfolio-scroll');
-  const dots         = document.querySelectorAll('.bportfolio-dot');
+  const dots = document.querySelectorAll('.bportfolio-dot');
 
   let isPaused = false;
-  let rafId    = null;
-  const SPEED  = 1.6; // px per frame
+  let rafId = null;
+  const SPEED = 1.6; // px per frame
 
   // ── Use innerWidth — most reliable for mobile ─────────────
   function getScroller() {
@@ -232,7 +232,7 @@ window.addEventListener('resize', handlePortfolioView);
 
   function syncDot(scroller) {
     const items = Array.from(scroller.querySelectorAll('.bportfolio-item'));
-    const rect  = scroller.getBoundingClientRect();
+    const rect = scroller.getBoundingClientRect();
     let closestIndex = 0, closestDist = Infinity;
     items.forEach((item, i) => {
       const dist = Math.abs(item.getBoundingClientRect().left - rect.left);
@@ -255,7 +255,7 @@ window.addEventListener('resize', handlePortfolioView);
     rafId = requestAnimationFrame(autoScroll);
   }
 
-  function pause()  { isPaused = true; }
+  function pause() { isPaused = true; }
   function resume() { isPaused = false; }
 
   function attachPause(el) {
@@ -270,8 +270,8 @@ window.addEventListener('resize', handlePortfolioView);
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       const scroller = getScroller();
-      const items    = Array.from(scroller.querySelectorAll('.bportfolio-item'));
-      const index    = parseInt(dot.dataset.index);
+      const items = Array.from(scroller.querySelectorAll('.bportfolio-item'));
+      const index = parseInt(dot.dataset.index);
       if (!items[index]) return;
       isPaused = true;
       const rect = scroller.getBoundingClientRect();

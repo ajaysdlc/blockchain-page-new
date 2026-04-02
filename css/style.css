@@ -1481,7 +1481,7 @@ header#hero {
 
 /* Main heading — bold heavy like Figma */
 .services-main-title {
-font-family: 'Rowdies', sans-serif;
+  font-family: 'Rowdies', sans-serif;
   font-weight: 800;
   font-size: clamp(28px, 4vw, 50px);
   line-height: 1.1;
@@ -2033,6 +2033,7 @@ font-family: 'Rowdies', sans-serif;
     display: block;
   }
 }
+
 @media (min-width: 600px) and (max-width: 900px) {
   .tech-logos-wrap {
     gap: 1rem;
@@ -3430,7 +3431,8 @@ font-family: 'Rowdies', sans-serif;
     font-size: 34px;
     letter-spacing: 2px;
     color: var(--red);
-font-family: 'Rowdies', sans-serif;    font-weight: 600;
+    font-family: 'Rowdies', sans-serif;
+    font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 0.6rem;
     display: block;
@@ -3454,5 +3456,89 @@ font-family: 'Rowdies', sans-serif;    font-weight: 600;
     color: rgba(255, 255, 255, 0.75);
     margin-bottom: 1rem;
     max-width: 680px;
+  }
+}
+
+/* ===================== PRICING — 1024px ONE LINE FIX ===================== */
+@media (min-width: 960px) and (max-width: 1100px) {
+  .pricing-grid {
+    flex-wrap: nowrap !important;
+    gap: 0.8rem !important;
+    align-items: center !important;
+  }
+
+  .pricing-card {
+    flex: 1 1 0 !important;
+    max-width: unset !important;
+    min-width: 0 !important;
+    padding: 1.4rem 1rem !important;
+  }
+
+  .pricing-card.popular {
+    transform: scale(1) !important;
+    padding: 1.6rem 1rem !important;
+  }
+
+  .pricing-price {
+    font-size: 20px !important;
+  }
+
+  .pricing-subtitle {
+    font-size: 0.75rem !important;
+  }
+
+  .pricing-features li {
+    font-size: 0.76rem !important;
+  }
+
+  .btn-pricing-outline,
+  .btn-pricing-red {
+    font-size: 0.75rem !important;
+    padding: 0.65rem !important;
+  }
+}
+
+/* ===================== WHY CARDS — 1024px PADDING FIX ===================== */
+@media (min-width: 960px) and (max-width: 1100px) {
+  .why-card {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 1rem 1.2rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .why-icon-box,
+  .why-icon-box img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .why-card h4 {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .why-card p {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    padding-left: calc(36px + 0.8rem) !important;
+  }
+}
+
+/* ===================== WHY CARDS — 600px–768px PADDING FIX ===================== */
+@media (min-width: 600px) and (max-width: 768px) {
+  .why-card {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 1rem 1rem !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* ===================== WHY CARDS — MOBILE < 600px HEIGHT FIX ===================== */
+@media (max-width: 599px) {
+  .why-card {
+    height: auto !important;
+    min-height: unset !important;
   }
 }

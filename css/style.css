@@ -1811,6 +1811,12 @@ font-family: 'Rowdies', sans-serif;
   background: var(--bg);
 }
 
+@media (max-width: 500px) {
+  .tech-section {
+    padding: 2rem 0;
+  }
+}
+
 .tech-main-title {
   font-family: 'Rowdies', sans-serif;
   font-weight: 400;
@@ -2271,6 +2277,12 @@ font-family: 'Rowdies', sans-serif;
   background: var(--bg);
 }
 
+@media (max-width: 500px) {
+  .bportfolio-section {
+    padding: 2rem 0;
+  }
+}
+
 .bportfolio-section .container {
   overflow: visible;
 }
@@ -2466,6 +2478,12 @@ font-family: 'Rowdies', sans-serif;
 .pricing-section {
   padding: 5rem 0;
   background: #0C0305;
+}
+
+@media (max-width: 500px) {
+  .pricing-section {
+    padding: 2rem 0;
+  }
 }
 
 .container3 {
@@ -2720,6 +2738,12 @@ font-family: 'Rowdies', sans-serif;
   gap: 5rem;
   align-items: start;
   padding: 5rem 0;
+}
+
+@media (max-width: 500px) {
+  .bcta-layout {
+    padding: 2rem 0;
+  }
 }
 
 /* LEFT = form side */

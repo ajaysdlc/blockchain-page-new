@@ -1152,6 +1152,25 @@ header#hero {
 }
 
 /* ===================== ABOUT ===================== */
+.container4 {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+@media (max-width: 768px) {
+  .container4 {
+    padding: 0 0.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container4 {
+    padding: 0 0rem;
+  }
+}
+
 .about-section {
   padding: 5rem 0;
   background: var(--bg);
@@ -1160,11 +1179,13 @@ header#hero {
   overflow: hidden;
 }
 
-.about-section .container3 {
+.about-section .container4 {
   position: relative;
-  z-index: 1;
+  z-index: 100;
   /* sits above the ::before gradient */
 }
+
+
 
 .about-layout {
   width: 70%;
@@ -3336,11 +3357,10 @@ font-family: 'Rowdies', sans-serif;
 
   /* Clean text styling */
   .about-label {
-    font-size: 13px;
+    font-size: 34px;
     letter-spacing: 2px;
     color: var(--red);
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
+font-family: 'Rowdies', sans-serif;    font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 0.6rem;
     display: block;

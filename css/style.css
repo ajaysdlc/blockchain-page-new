@@ -3660,7 +3660,7 @@ header#hero {
   }
 }
 
-@media (min-width: 900px) and (max-width: 960px) {
+@media (min-width: 900px) and (max-width: 1020px) {
   .hero-circle,
   .hero-text-circle {
     width: 340px !important;

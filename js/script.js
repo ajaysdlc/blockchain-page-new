@@ -126,7 +126,7 @@ window.addEventListener('load', () => {
     if (requirement.value.trim().length < 10) { isValid = false; requirement.style.borderColor = 'red'; }
     if (!isValid) { alert('Please fill all required fields correctly.'); return; }
     submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Sending...';
+    submitBtn.innerHTML = 'Book A Free Consultation';
     const templateParams = { name: fullName.value.trim(), email: email.value.trim(), phone: phone.value.trim(), message: requirement.value.trim(), page_url: pageUrl ? pageUrl.value : window.location.href, time: new Date().toLocaleString() };
     try {
       const response = await emailjs.send('service_h38sdpk', 'template_lbjyykk', templateParams);

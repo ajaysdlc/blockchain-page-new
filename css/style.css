@@ -602,6 +602,15 @@ header#hero {
   border-radius: 50%;
 }
 
+@media (min-width: 1800px) {
+
+  .hero-circle,
+  .hero-text-circle {
+    width: 750px;
+    height: 750px;
+  }
+}
+
 /* ── Left: Character circle ── */
 .hero-circle {
   display: flex;
@@ -676,6 +685,22 @@ header#hero {
   max-width: 400px;
 }
 
+@media (min-width: 1400px) {
+  .hero-desc {
+    font-size: 18px;
+    line-height: 28px;
+    /* adjusted line-height for larger font */
+  }
+}
+
+@media (min-width: 1800px) {
+  .hero-desc {
+    font-size: 22px;
+    line-height: 28px;
+    /* adjusted line-height for larger font */
+  }
+}
+
 .hero-btns {
   display: flex;
   gap: 16px;
@@ -727,6 +752,17 @@ header#hero {
     width: 200px;
     height: 56px;
     font-size: 17px;
+    padding: 15px 26px;
+  }
+}
+
+@media (min-width: 1800px) {
+
+  .hero-content .btn-primary,
+  .hero-content .btn-secondary {
+    width: 230px;
+    height: 62px;
+    font-size: 20px;
     padding: 15px 26px;
   }
 }
@@ -798,7 +834,7 @@ header#hero {
 .hero-mobile-text-wrap .hero-desc {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
@@ -1132,7 +1168,7 @@ header#hero {
   }
 
   .hero-mobile-text-wrap .hero-desc {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -2190,6 +2226,14 @@ header#hero {
   color: #B3B3B3;
   margin: 0;
   padding-left: calc(48px + 0.8rem);
+}
+
+@media (max-width: 1400px) {
+  .why-card p {
+    font-size: 18px !important;
+    line-height: 18px;
+    /* scale line-height proportionally */
+  }
 }
 
 @media (max-width: 1150px) {
@@ -3676,11 +3720,11 @@ header#hero {
   }
 }
 
-@media (min-width: 900px) and (max-width: 1020px) {
+@media (min-width: 901px) and (max-width: 1101px) {
   .hero-circle,
   .hero-text-circle {
-    width: 340px !important;
-    height: 340px !important;
+    width: 450px !important;
+    height: 450px !important;
   }
 
   .hero-text-circle {
@@ -3692,13 +3736,13 @@ header#hero {
   }
 
   .hero-title {
-    font-size: 22px !important;
+    font-size: 38px !important;
     line-height: 1.2 !important;
     margin-bottom: 0.4rem !important;
   }
 
   .hero-desc {
-    font-size: 11px !important;
+    font-size: 14px !important;
     line-height: 1.5 !important;
     margin-bottom: 0.6rem !important;
   }
@@ -3711,7 +3755,7 @@ header#hero {
   .hero-content .btn-secondary,
   .hero-btns .btn-primary,
   .hero-btns .btn-secondary {
-    width: 100px !important;
+    width: 140px !important;
     height: 36px !important;
     font-size: 10px !important;
     padding: 0 8px !important;

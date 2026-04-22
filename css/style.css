@@ -689,6 +689,7 @@ header#hero {
   .hero-desc {
     font-size: 18px;
     line-height: 28px;
+    max-width: 500px;
     /* adjusted line-height for larger font */
   }
 }
@@ -697,6 +698,7 @@ header#hero {
   .hero-desc {
     font-size: 22px;
     line-height: 28px;
+    max-width: 500px;
     /* adjusted line-height for larger font */
   }
 }
@@ -2468,6 +2470,18 @@ header#hero {
   }
 }
 
+@media (min-width: 1800px) {
+  .bportfolio-info h4 {
+    font-size: 14px;
+    /* 12px + 2px */
+  }
+
+  .bportfolio-info p {
+    font-size: 14px;
+    /* 12px + 2px */
+  }
+}
+
 /* ITEM WRAPPER */
 .bportfolio-item {
   display: flex;
@@ -3744,7 +3758,7 @@ header#hero {
   .hero-desc {
     font-size: 14px !important;
     line-height: 1.5 !important;
-    margin-bottom: 0.6rem !important;
+    margin-bottom: 1.4rem !important;
   }
 
   .hero-btns {
@@ -3757,7 +3771,7 @@ header#hero {
   .hero-btns .btn-secondary {
     width: 140px !important;
     height: 36px !important;
-    font-size: 10px !important;
+    font-size: 12px !important;
     padding: 0 8px !important;
   }
 }

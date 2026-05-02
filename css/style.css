@@ -91,6 +91,12 @@ a {
   margin-bottom: 2.5rem;
 }
 
+@media (max-width: 900px) {
+  .section-title-white {
+    text-align: left !important;
+  }
+}
+
 .section-label {
   font-size: 0.75rem;
   font-weight: 600;
@@ -879,7 +885,7 @@ header#hero {
    ============================================================ */
 
 /* Large Desktop: 1100px – 1400px */
-@media (max-width: 1400px) {
+@media (max-width: 1399px) {
   .hero-content {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -1295,7 +1301,7 @@ header#hero {
 .about-label {
   font-family: 'Rowdies', sans-serif;
   font-weight: 400;
-  font-size: clamp(34px, 5vw, 50px);
+  font-size: clamp(34px, 5vw, 46px);
   line-height: 60px;
   letter-spacing: 0;
   color: #ffffff !important;
@@ -1495,6 +1501,7 @@ header#hero {
   .about-mobile-overlay .about-heading {
     font-size: 26px;
     line-height: 36px;
+    
   }
 
   .about-mobile-overlay .about-desc {
@@ -1856,7 +1863,7 @@ header#hero {
 
 /* ===================== TECH STACK ===================== */
 .tech-section {
-  padding: 5rem 0;
+  padding: 0rem 0 5rem;
   background: var(--bg);
 }
 
@@ -2001,9 +2008,11 @@ header#hero {
     line-height: 40px;
     letter-spacing: 0;
     color: #fff;
-    text-align: left;
+    
     margin-bottom: 2rem;
   }
+
+   
 
   /* Tabs scroll horizontally */
   .tech-tabs-wrapper {
@@ -2083,6 +2092,12 @@ header#hero {
   }
 }
 
+ @media (max-width: 900px) {
+   .tech-main-title {
+     text-align: left !important;
+   }
+ }
+
 @media (min-width: 600px) and (max-width: 900px) {
   .tech-logos-wrap {
     gap: 1rem;
@@ -2156,6 +2171,12 @@ header#hero {
   color: #ffffff;
   text-align: center;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+  .why-main-title {
+    text-align: left !important;
+  }
 }
 
 /* Grid — desktop 3 columns */
@@ -2243,6 +2264,12 @@ header#hero {
     font-size: 12px;
     line-height: 18px;
     /* scale line-height proportionally */
+  }
+}
+
+@media (min-width: 900px) and (max-width: 960px) {
+  .why-card p {
+    font-size: 13px !important;
   }
 }
 
@@ -2863,6 +2890,12 @@ header#hero {
   margin-bottom: 1rem;
 }
 
+/* @media (max-width: 1040px) {
+  .bcta-heading {
+    text-align: center;
+  }
+} */
+
 .bcta-desc {
   color: #fff;
   font-size: 0.85rem;
@@ -3442,7 +3475,6 @@ header#hero {
   /* ── Uniform section padding for all sections on tablet ── */
   .about-section,
   .bservices-section,
-  .tech-section,
   .why-section,
   .bportfolio-section,
   .pricing-section,
@@ -3727,7 +3759,7 @@ header#hero {
   .btn-services-cta,
   .btn-pricing-cta,
   .fcf-submit-btn {
-    font-size: 15px !important;
+    font-size: 14px !important;
     height: 46px !important;
     min-width: unset !important;
     width: 100% !important;
@@ -3773,5 +3805,71 @@ header#hero {
     height: 36px !important;
     font-size: 12px !important;
     padding: 0 8px !important;
+  }
+}
+
+
+
+
+
+/* Default (above 1024px) */
+/* Default (above 1400px) */
+.contact-title,
+.hero-title,
+.about-label,
+.about-heading,
+.services-main-title,
+.tech-main-title,
+.why-main-title,
+.section-title-white,
+.bcta-heading {
+  font-size: 50px !important;
+}
+
+/* 1100px – 1400px */
+@media (max-width: 1400px) {
+
+  .contact-title,
+  .hero-title,
+  .about-label,
+  .about-heading,
+  .services-main-title,
+  .tech-main-title,
+  .why-main-title,
+  .section-title-white,
+  .bcta-heading {
+    font-size: 46px !important;
+  }
+}
+
+/* 400px – 1100px */
+@media (max-width: 1100px) {
+
+  .contact-title,
+  .hero-title,
+  .about-label,
+  .about-heading,
+  .services-main-title,
+  .tech-main-title,
+  .why-main-title,
+  .section-title-white,
+  .bcta-heading {
+    font-size: 38px !important;
+  }
+}
+
+/* Below 400px */
+@media (max-width: 400px) {
+
+  .contact-title,
+  .hero-title,
+  .about-label,
+  .about-heading,
+  .services-main-title,
+  .tech-main-title,
+  .why-main-title,
+  .section-title-white,
+  .bcta-heading {
+    font-size: 26px !important;
   }
 }

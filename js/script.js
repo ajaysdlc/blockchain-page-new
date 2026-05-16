@@ -1,3 +1,12 @@
+// ===================== BLOCKED EMAIL DOMAINS =====================
+const blockedDomains = ['gmail.com'];
+function isBusinessEmail(email) {
+  const domain = email.split('@')[1]?.toLowerCase();
+  return domain && !blockedDomains.includes(domain);
+}
+
+
+
 // ===================== NAVBAR =====================
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -119,8 +128,19 @@ window.addEventListener('load', () => {
     [fullName, email, phone, requirement].forEach(i => i.style.borderColor = '#ddd');
     let isValid = true;
     if (fullName.value.trim().length < 3) { isValid = false; fullName.style.borderColor = 'red'; }
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email.value.trim())) { email.style.borderColor = 'red'; alert('Please enter a valid email address.'); return; }
+
+
+// Add this line before the emailPattern.test() check
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email.value.trim())) {
+    email.style.borderColor = 'red';
+    alert('Please enter a valid email address.');
+    return;
+    }
+    
+    if (!isBusinessEmail(email.value.trim())) { email.style.borderColor = 'red'; alert('Please use your business email address. Free email providers like Gmail are not allowed.'); return; }
+    
     const phonePattern = /^(\+|0)?[\d\s\-()]{7,20}$/;
     if (!phonePattern.test(phone.value.trim())) { isValid = false; phone.style.borderColor = 'red'; } else { phone.style.borderColor = ''; }
     if (requirement.value.trim().length < 10) { isValid = false; requirement.style.borderColor = 'red'; }
@@ -152,8 +172,7 @@ window.addEventListener('pageshow', function (e) {
 function validateAndSubmitBookForm() {
   const fields = [
     { id: 'bookFullName', check: v => v.trim().length >= 3, msg: 'Full name must be at least 3 characters.' },
-    { id: 'bookEmail', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: 'Please enter a valid email address.' },
-    { id: 'bookPhone', check: v => /^[+\d\s\-()]{7,15}$/.test(v.trim()), msg: 'Please enter a valid phone number.' },
+{ id: 'bookEmail', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) && isBusinessEmail(v.trim()), msg: 'Please use your business email. Free emails (Gmail, Yahoo, etc.) are not allowed.' },    { id: 'bookPhone', check: v => /^[+\d\s\-()]{7,15}$/.test(v.trim()), msg: 'Please enter a valid phone number.' },
     { id: 'bookCompany', check: v => v.trim().length >= 2, msg: 'Please enter your company or studio name.' },
     { id: 'bookProjectType', check: v => v !== '', msg: 'Please select a project type.' },
     { id: 'bookBudget', check: v => v !== '', msg: 'Please select a budget range.' },
@@ -175,8 +194,7 @@ function validateAndSubmitBookForm() {
 function validateAndSubmitConsult() {
   const fields = [
     { id: 'consultName', check: v => v.trim().length >= 3, msg: 'Full name must be at least 3 characters.' },
-    { id: 'consultEmail', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: 'Please enter a valid email address.' },
-    { id: 'consultPhone', check: v => /^[+\d\s\-()]{7,15}$/.test(v.trim()), msg: 'Please enter a valid phone number.' },
+{ id: 'consultEmail', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) && isBusinessEmail(v.trim()), msg: 'Please use your business email. Free emails (Gmail, Yahoo, etc.) are not allowed.' },    { id: 'consultPhone', check: v => /^[+\d\s\-()]{7,15}$/.test(v.trim()), msg: 'Please enter a valid phone number.' },
     { id: 'consultRequirement', check: v => v.trim().length >= 10, msg: 'Please describe your requirements (min 10 characters).' }
   ];
   let isValid = true;
@@ -298,5 +316,36 @@ window.addEventListener('resize', handlePortfolioView);
   });
 
 })();
+
+function validateAndSubmitQuoteForm() {
+  const fields = [
+    { id: 'quoteName',    check: v => v.trim().length >= 3,              msg: 'Full name must be at least 3 characters.' },
+{ id: 'quoteEmail', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) && isBusinessEmail(v.trim()), msg: 'Please use your business email. Free emails (Gmail, Yahoo, etc.) are not allowed.' },    { id: 'quotePhone',   check: v => /^[+\-\d\s]{7,15}$/.test(v.trim()), msg: 'Please enter a valid phone number.' },
+    { id: 'quoteCompany', check: v => v.trim().length >= 2,              msg: 'Please enter your company or studio name.' },
+    { id: 'quoteService', check: v => v !== '',                          msg: 'Please select a service.' },
+    { id: 'quoteBudget',  check: v => v !== '',                          msg: 'Please select a budget range.' },
+    { id: 'quoteMessage', check: v => v.trim().length >= 20,             msg: 'Please describe your project (min 20 characters).' },
+  ];
+
+  let isValid = true;
+  fields.forEach(({ id, check, msg }) => {
+    const el = document.getElementById(id);
+    const errEl = document.getElementById('err-' + id);
+    if (!check(el.value)) {
+      el.style.borderColor = '#ff4d4d';
+      errEl.textContent = msg;
+      isValid = false;
+    } else {
+      el.style.borderColor = '';
+      errEl.textContent = '';
+    }
+    el.addEventListener('input', () => {
+      if (check(el.value)) { el.style.borderColor = ''; errEl.textContent = ''; }
+    });
+  });
+
+  if (!isValid) return;
+  window.location.href = 'https://sdlccorp.com/thank-you';
+}
 
 

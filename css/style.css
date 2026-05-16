@@ -87,7 +87,7 @@ a {
   font-size: clamp(26px, 4vw, 50px);
   line-height: 1.1;
   color: #fff;
-  text-align: center;
+  text-align: left;
   margin-bottom: 2.5rem;
 }
 
@@ -553,6 +553,13 @@ header#hero {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+/* For screens above 1800px */
+@media (min-width: 1800px) {
+  header#hero {
+    min-height: 120vh;
+  }
 }
 
 .hero-bg {
@@ -1880,7 +1887,7 @@ header#hero {
   line-height: 1.1;
   letter-spacing: 0;
   color: #fff;
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
 }
 
@@ -1995,6 +2002,7 @@ header#hero {
   .tech-main-title {
     font-size: 52px;
     line-height: 1.1;
+      text-align: left;
   }
 }
 
@@ -2008,7 +2016,7 @@ header#hero {
     line-height: 40px;
     letter-spacing: 0;
     color: #fff;
-    
+      text-align: left;
     margin-bottom: 2rem;
   }
 
@@ -2115,6 +2123,7 @@ header#hero {
 @media (max-width: 480px) {
   .tech-main-title {
     font-size: 26px;
+      text-align: left;
     line-height: 36px;
   }
 
@@ -2169,7 +2178,7 @@ header#hero {
   line-height: 1.1;
   letter-spacing: 0;
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
 }
 
@@ -2610,6 +2619,11 @@ header#hero {
   max-width: 1480px;
   margin: 0 auto;
   padding: 0 3rem;
+}
+
+.bcta-section .container3 {
+  position: relative;
+  z-index: 1;
 }
 
 .pricing-grid {
@@ -3207,7 +3221,6 @@ header#hero {
 
 .modal-close:hover {
   background: var(--grad-red);
-  border-color: transparent;
 }
 
 .modal-title {
@@ -3216,6 +3229,7 @@ header#hero {
   font-weight: 400;
   color: #fff;
   margin-bottom: 0.4rem;
+  padding-top: 14px;
 }
 
 .gradient-text {
@@ -3806,6 +3820,24 @@ header#hero {
     font-size: 12px !important;
     padding: 0 8px !important;
   }
+}
+
+.consult-group input,
+.consult-group textarea {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 0, 25, 0.22) !important;
+  color: #fff !important;
+}
+
+.consult-group input::placeholder,
+.consult-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.consult-group input:focus,
+.consult-group textarea:focus {
+  border-color: var(--red) !important;
+  background: rgba(255, 0, 25, 0.06) !important;
 }
 
 

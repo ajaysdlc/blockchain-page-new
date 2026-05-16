@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta name="robots" content="noindex">
+    <!-- <meta name="robots" content="noindex"> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -1152,7 +1152,7 @@
 
     <!-- Font Awesome non-blocking -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-       crossorigin  onload="this.onload=null;this.rel='stylesheet'" />
+        crossorigin onload="this.onload=null;this.rel='stylesheet'" />
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     </noscript>
@@ -1179,7 +1179,7 @@
         <nav class="navbar" id="navbar">
             <div class="nav-brand">
                 <div class="brand-logo">
-<img src="assets/icons/sdlc-logo-new.png" alt="Logo" width="120" height="44">                    </a>
+                    <img src="assets/icons/sdlc-logo-new.png" alt="Logo" width="120" height="44"> </a>
                 </div>
             </div>
 
@@ -1412,7 +1412,7 @@
 
     <!-- TECH STACK -->
     <section id="tech" class="tech-section">
-        <div class="container">
+        <div class="container3">
             <h2 class="tech-main-title">Tech Stack We Use for<br>Blockchain Game Development</h2>
 
             <div class="tech-tabs-wrapper">
@@ -2089,8 +2089,8 @@
 
     <!-- PRICING -->
     <section id="pricing" class="pricing-section">
-        <div class="container">
-            <h2 class="section-title-white">Hire Game Developers<br>As Per Your Requirement</h2>
+        <div class="container3">
+            <h2 class="section-title-white">Hire Game Developers As Per Your Requirement</h2>
             <div class="pricing-grid">
 
                 <!-- CARD 1 -->
@@ -2105,7 +2105,9 @@
                         <li><i class="far fa-circle-check"></i> Pay-as-you-go</li>
                         <li><i class="far fa-circle-check"></i> Fast onboarding</li>
                     </ul>
-                    <button class="btn-pricing-outline">Select Hourly</button>
+                    <button class="btn-pricing-outline"
+                        onclick="document.getElementById('getQuoteModal').classList.add('active'); document.body.style.overflow='hidden'">Select
+                        Hourly</button>
                 </div>
 
                 <!-- CARD 2 POPULAR -->
@@ -2121,7 +2123,9 @@
                         <li><i class="far fa-circle-check"></i> Expertise in Unity / Unreal</li>
                         <li><i class="far fa-circle-check"></i> Daily progress updates</li>
                     </ul>
-                    <button class="btn-pricing-red">Select Monthly</button>
+                    <button class="btn-pricing-red"
+                        onclick="document.getElementById('getQuoteModal').classList.add('active'); document.body.style.overflow='hidden'">Select
+                        Monthly</button>
                 </div>
 
                 <!-- CARD 3 -->
@@ -2136,7 +2140,9 @@
                         <li><i class="far fa-circle-check"></i> Faster development cycle</li>
                         <li><i class="far fa-circle-check"></i> Ideal for full-scale game projects</li>
                     </ul>
-                    <button class="btn-pricing-outline">Select Monthly</button>
+                    <button class="btn-pricing-outline"
+                        onclick="document.getElementById('getQuoteModal').classList.add('active'); document.body.style.overflow='hidden'">Select
+                        Monthly</button>
                 </div>
 
             </div>
@@ -2153,7 +2159,7 @@
     <section id="contact" class="bcta-section"
         style="background-image: url('assets/images/footerbg.webp'); background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative;">
 
-        <div class="container">
+        <div class="container3">
             <div class="bcta-layout">
 
                 <!-- LEFT: Heading + Desc + FORM -->
@@ -2264,7 +2270,7 @@
     <div class="modal-overlay" id="bookCallModal"
         onclick="if(event.target===this){this.classList.remove('active'); document.body.style.overflow='';}">
         <div class="modal-box">
-            <button class="modal-close" id="modalClose" aria-label="Close modal" 
+            <button class="modal-close" id="modalClose" aria-label="Close modal"
                 onclick="document.getElementById('bookCallModal').classList.remove('active'); document.body.style.overflow='';"><i
                     class="fas fa-times"></i></button>
             <h2 class="modal-title">Book a <span class="gradient-text">Free Call</span></h2>
@@ -2334,6 +2340,83 @@
         </div>
     </div>
 
+    <!-- GET A QUOTE MODAL -->
+    <div class="modal-overlay" id="getQuoteModal"
+        onclick="if(event.target===this){this.classList.remove('active');document.body.style.overflow=''}">
+        <div class="modal-box">
+            <button class="modal-close" aria-label="Close modal"
+                onclick="document.getElementById('getQuoteModal').classList.remove('active');document.body.style.overflow=''">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Get a <span class="gradient-text">Free Quote</span></h2>
+            <p class="modal-sub">Share your project details and we'll send a custom quote within 24 hours.</p>
+            <form class="book-form" id="getQuoteForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="quoteName" placeholder="John Doe"
+                            oninput="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')">
+                        <span class="field-error" id="err-quoteName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="quoteEmail" placeholder="john@example.com">
+                        <span class="field-error" id="err-quoteEmail"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="quotePhone" placeholder="+1 234 567 890"
+                            oninput="this.value=this.value.replace(/[^0-9+\-\s]/g,'')">
+                        <span class="field-error" id="err-quotePhone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Company / Studio Name</label>
+                        <input type="text" id="quoteCompany" placeholder="Game Studio Inc.">
+                        <span class="field-error" id="err-quoteCompany"></span>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label for="quoteService">Service Required</label>
+                    <select id="quoteService">
+                        <option value="" disabled selected>Select a service</option>
+                        <option>Custom Blockchain Game Development</option>
+                        <option>NFT Game Development</option>
+                        <option>Play-to-Earn (P2E) Game Development</option>
+                        <option>Smart Contract Development</option>
+                        <option>Game Porting to Blockchain</option>
+                        <option>Wallet Integration &amp; Token Development</option>
+                        <option>Other</option>
+                    </select>
+                    <span class="field-error" id="err-quoteService"></span>
+                </div>
+                <div class="form-group full">
+                    <label for="quoteBudget">Project Budget</label>
+                    <select id="quoteBudget">
+                        <option value="" disabled selected>Select budget range</option>
+                        <option>Under $5,000</option>
+                        <option>$5,000 – $15,000</option>
+                        <option>$15,000 – $50,000</option>
+                        <option>$50,000+</option>
+                    </select>
+                    <span class="field-error" id="err-quoteBudget"></span>
+                </div>
+                <div class="form-group full">
+                    <label>Project Description</label>
+                    <textarea id="quoteMessage" rows="4"
+                        placeholder="Describe your game idea, features, platforms, timeline..."></textarea>
+                    <span class="field-error" id="err-quoteMessage"></span>
+                </div>
+                <button type="button" class="btn-submit" id="quoteSubmitBtn" onclick="validateAndSubmitQuoteForm()">Send
+                    My
+                    Request</button>
+            </form>
+        </div>
+    </div>
+
+
+
     <!-- CONSULTATION MODAL -->
     <div class="modal-overlay" id="consultModal"
         onclick="if(event.target===this){this.classList.remove('active'); document.body.style.overflow='';}">
@@ -2395,15 +2478,13 @@
     </script>
 
     <!-- EmailJS + main script deferred -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-    <script defer>
-        window.addEventListener('load', function () {
-            if (window.emailjs) {
-                emailjs.init("_Kjrc-i7wM9oKtImk");
-            }
-        });
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("_Kjrc-i7wM9oKtImk"); // Your PUBLIC KEY
+        })();
     </script>
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js"></script>
 
 </body>
 
